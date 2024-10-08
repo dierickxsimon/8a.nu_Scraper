@@ -5,7 +5,7 @@ import re
 
 class AscentsScraper(BaseScraper):
     def __init__(self, file_path, crag):
-        self.url = f"https://www.8a.nu/crags/sportclimbing/belgium/{crag}/ascents"
+        self._url = f"https://www.8a.nu/crags/sportclimbing/belgium/{crag}/ascents"
         super().__init__(file_path, self.url)
         
     def scrape(self):

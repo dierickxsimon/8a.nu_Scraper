@@ -9,11 +9,21 @@ from selenium.common.exceptions import NoSuchElementException, ElementClickInter
 
 class BaseScraper:
     def __init__(self, file_path, url):
-        self.url = url
-        
         self.driver = uc.Chrome()
+        
+        self._url = url
         self.driver.get(self.url)
         self.writer = self._get_writer(file_path) 
+        
+    @property
+    def url(self):
+        return self._url
+    
+    @url.setter
+    def url(self, value):
+        self._url = value
+        self.driver.get(self.url)
+        self._sleepy()
         
         
     @property
